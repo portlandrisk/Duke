@@ -1,26 +1,12 @@
 
 package no.priv.garshol.duke.matchers;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import no.priv.garshol.duke.*;
+import no.priv.garshol.duke.utils.LinkDatabaseUtils;
+
 import java.io.IOException;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
-import no.priv.garshol.duke.Link;
-import no.priv.garshol.duke.Record;
-import no.priv.garshol.duke.Database;
-import no.priv.garshol.duke.Property;
-import no.priv.garshol.duke.LinkKind;
-import no.priv.garshol.duke.Processor;
-import no.priv.garshol.duke.LinkStatus;
-import no.priv.garshol.duke.LinkDatabase;
-import no.priv.garshol.duke.Configuration;
-import no.priv.garshol.duke.DukeException;
-import no.priv.garshol.duke.InMemoryLinkDatabase;
-import no.priv.garshol.duke.utils.LinkDatabaseUtils;
 
 /**
  * A match listener for evaluating Duke configurations against a set
@@ -143,7 +129,7 @@ public class TestFileListener extends AbstractMatchListener {
       Record r2 = database.findRecordById(link.getID2());
       if (r1 != null && r2 != null) {
         if (debug && !showmatches)
-          PrintMatchListener.show(r1, r2, processor.compare(r1, r2),
+          PrintMatchListener.show(r1, r2, processor.compare(r1, r2).getProbability(),
                                   "\nNOT FOUND", props, pretty);
       } else if (debug && !showmatches) {
         System.out.println("\nIDENTITIES IN TEST FILE NOT FOUND IN DATA");

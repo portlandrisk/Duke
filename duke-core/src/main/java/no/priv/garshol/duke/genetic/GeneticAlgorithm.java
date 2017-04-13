@@ -1,21 +1,16 @@
 
 package no.priv.garshol.duke.genetic;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import no.priv.garshol.duke.*;
 import no.priv.garshol.duke.matchers.MatchListener;
 import no.priv.garshol.duke.matchers.PrintMatchListener;
 import no.priv.garshol.duke.matchers.TestFileListener;
 import no.priv.garshol.duke.utils.LinkDatabaseUtils;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.*;
+import java.util.Comparator;
 
 /**
  * The class that actually runs the genetic algorithm.
@@ -614,7 +609,7 @@ public class GeneticAlgorithm {
       for (int ix = 0; ix < configs.size(); ix++) {
         Configuration config = configs.get(ix).getConfiguration();
         Processor proc = new Processor(config, database);
-        believers[ix] = proc.compare(r1, r2) > config.getThreshold();
+        believers[ix] = proc.compare(r1, r2).getProbability() > config.getThreshold();
       }
       return believers;
     }

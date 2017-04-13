@@ -117,4 +117,6 @@ public interface Configuration {
    * @since 1.3
    */
   public List<Comparator> getCustomComparators();
+
+  public boolean allowPropertyProbabilityTracking();
 }

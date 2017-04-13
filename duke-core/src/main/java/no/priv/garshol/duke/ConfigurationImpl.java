@@ -1,14 +1,9 @@
 
 package no.priv.garshol.duke;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import no.priv.garshol.duke.utils.Utils;
+
+import java.util.*;
 
 /**
  * Holds the configuration details for a dataset.
@@ -35,11 +30,14 @@ public class ConfigurationImpl implements Configuration {
 
   private List<Comparator> customComparators;
 
+  private boolean allowPropertyProbabilityTracking;
+
   public ConfigurationImpl() {
     this.datasources = new ArrayList();
     this.group1 = new ArrayList();
     this.group2 = new ArrayList();
     this.customComparators = new ArrayList<Comparator>();
+    this.allowPropertyProbabilityTracking = true;
   }
 
   /**
@@ -328,5 +326,14 @@ public class ConfigurationImpl implements Configuration {
   @Override
   public void addCustomComparator(Comparator comparator) {
 	this.customComparators.add(comparator);
+  }
+
+  @Override
+  public boolean allowPropertyProbabilityTracking() {
+    return this.allowPropertyProbabilityTracking;
+  }
+
+  public void setAllowPropertyProbabilityTracking(boolean allowPropertyProbabilityTracking) {
+    this.allowPropertyProbabilityTracking = allowPropertyProbabilityTracking;
   }
 }
